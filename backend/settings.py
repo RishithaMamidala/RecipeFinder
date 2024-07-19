@@ -105,17 +105,6 @@ WSGI_APPLICATION = "backend.wsgi.application"
 #     }
 # }
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.mysql",
-#         "NAME": "RecipeFinder",
-#         "USER": "admin",
-#         "PASSWORD": "Honey361",
-#         "HOST": "recipefinder.czkgoq2emc5y.us-east-2.rds.amazonaws.com",
-#         "PORT": "3306",  # Default port for MySQL; change if needed
-#     }
-# }
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
