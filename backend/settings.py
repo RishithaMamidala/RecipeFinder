@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta 
-from decouple import config
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-ygato2m*q5_2l#chq8%nv6w04qtqg+mln(ydtph&1a-49__c*3"
-SPOONACULAR_API_KEY = "c84ab06195fc4f0ca59311ec0d4935d0"
+SECRET_KEY = os.getenv('SECRET_KEY')
+SPOONACULAR_API_KEY = os.getenv('SPOONACULAR_API_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -103,14 +105,25 @@ WSGI_APPLICATION = "backend.wsgi.application"
 #     }
 # }
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "RecipeFinder",
+#         "USER": "admin",
+#         "PASSWORD": "Honey361",
+#         "HOST": "recipefinder.czkgoq2emc5y.us-east-2.rds.amazonaws.com",
+#         "PORT": "3306",  # Default port for MySQL; change if needed
+#     }
+# }
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "RecipeFinder",
-        "USER": "admin",
-        "PASSWORD": "Honey361",
-        "HOST": "recipefinder.czkgoq2emc5y.us-east-2.rds.amazonaws.com",
-        "PORT": "3306",  # Default port for MySQL; change if needed
+        "NAME": os.getenv('DATABASE_NAME'),
+        "USER": os.getenv('DATABASE_USER'),
+        "PASSWORD": os.getenv('DATABASE_PASSWORD'),
+        "HOST": os.getenv('DATABASE_HOST'),
+        "PORT": os.getenv('DATABASE_PORT'),
     }
 }
 
